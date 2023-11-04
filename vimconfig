@@ -8,5 +8,13 @@ set ai
 set number
 set hlsearch
 set ruler
+set viminfo=%,<1000,'10,/50,:100,h,f0,n~/.viminfo
+set term=xterm-256color
+set belloff=all
 
-highlight Comment ctermfg=green 
+highlight Comment ctermfg=green
+
+
+if match($TERM, "screen")!=-1
+    set term=xterm
+endif
