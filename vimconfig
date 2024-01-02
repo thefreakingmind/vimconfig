@@ -1,20 +1,33 @@
 syntax on
-filetype plugin indent on
+set expandtab
+set tabstop=2
 set shiftwidth=2
-set tabstop=4
-set number
-set backspace=2
+set expandtab
 set ai
+set smartindent
+set nocompatible
+filetype plugin indent on
+
 set number
 set hlsearch
 set ruler
-set viminfo=%,<1000,'10,/50,:100,h,f0,n~/.viminfo
-set term=xterm-256color
-set belloff=all
-
+set background=dark
+colorscheme peachpuff
 highlight Comment ctermfg=green
 
+set foldcolumn=0
+set signcolumn=no
 
-if match($TERM, "screen")!=-1
-    set term=xterm
-endif
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+
+highlight CocFloating ctermbg=DarkGray
+hi Pmenu ctermbg=black ctermfg=white
+hi CocInlayHint guibg=black guifg=Blue ctermbg=black ctermfg=white
+
+call plug#begin()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
